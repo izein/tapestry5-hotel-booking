@@ -24,6 +24,7 @@ import com.tap5.hotelbooking.data.UserWorkspace;
 import com.tap5.hotelbooking.data.Years;
 import com.tap5.hotelbooking.entities.Booking;
 import com.tap5.hotelbooking.entities.Hotel;
+import com.tap5.hotelbooking.services.RedisPublisher;
 
 /**
  * This page implements booking process for a give hotel.
@@ -52,6 +53,9 @@ public class Book
 
     @Inject
     private CrudServiceDAO dao;
+    
+    @Inject
+    private RedisPublisher publisher;
 
     @InjectComponent
     private Form bookingForm;
@@ -142,6 +146,8 @@ public class Book
 
         userWorkspace.confirmCurrentBooking(booking);
 
+        publisher.publish("booking:" + booking.getId() + ":hotel", booking.getHotel().getName());
+        
         booking = null;
 
         // Return to search

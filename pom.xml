@@ -9,18 +9,24 @@
 	<name>tapestry5-hotel-booking Tapestry 5 Application</name>
 	<dependencies>
 		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>1.3.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+
+		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-core</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
 
-		<!--
-			A dependency on either JUnit or TestNG is required, or the surefire
-			plugin (which runs the tests) will fail, preventing Maven from
-			packaging the WAR. Tapestry includes a large number of testing
-			facilities designed for use with TestNG (http://testng.org/), so it's
-			recommended.
-		-->
+		<!-- A dependency on either JUnit or TestNG is required, or the surefire 
+			plugin (which runs the tests) will fail, preventing Maven from packaging 
+			the WAR. Tapestry includes a large number of testing facilities designed 
+			for use with TestNG (http://testng.org/), so it's recommended. -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -60,11 +66,8 @@
 			<version>${tapestry-release-version}</version>
 		</dependency>
 
-		<!--
-			tapestry-test will conflict with RunJettyRun inside Eclipse.
-			tapestry-test brings in Selenium, which is based on Jetty 5.1;
-			RunJettyRun uses Jetty 6.
-		-->
+		<!-- tapestry-test will conflict with RunJettyRun inside Eclipse. tapestry-test 
+			brings in Selenium, which is based on Jetty 5.1; RunJettyRun uses Jetty 6. -->
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-test</artifactId>
@@ -73,10 +76,8 @@
 		</dependency>
 
 
-		<!--
-			Provided by the servlet container, but sometimes referenced in the
-			application code.
-		-->
+		<!-- Provided by the servlet container, but sometimes referenced in the 
+			application code. -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -84,9 +85,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- 
-			Tapx Core : include kaptcha component
-		-->
+		<!-- Tapx Core : include kaptcha component -->
 		<dependency>
 			<groupId>com.howardlewisship</groupId>
 			<artifactId>tapx-core</artifactId>
@@ -121,10 +120,8 @@
 				<configuration>
 					<!-- Log to the console. -->
 					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-						<!--
-							This doesn't do anything for Jetty, but is a workaround for a
-							Maven bug that prevents the requestLog from being set.
-						-->
+						<!-- This doesn't do anything for Jetty, but is a workaround for a 
+							Maven bug that prevents the requestLog from being set. -->
 						<append>true</append>
 					</requestLog>
 					<systemProperties>
@@ -153,10 +150,8 @@
 
 	<reporting>
 
-		<!--
-			Adds a report detailing the components, mixins and base classes
-			defined by this module.
-		-->
+		<!-- Adds a report detailing the components, mixins and base classes defined 
+			by this module. -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tapestry</groupId>

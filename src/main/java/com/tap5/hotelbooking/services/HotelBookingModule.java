@@ -27,6 +27,7 @@ public class HotelBookingModule
     public static void bind(ServiceBinder binder)
     {
         binder.bind(Authenticator.class, BasicAuthenticator.class);
+        binder.bind(RedisPublisher.class, RedisPublisherImpl.class);
     }
 
     @ApplicationDefaults
